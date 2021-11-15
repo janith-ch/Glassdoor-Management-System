@@ -1,0 +1,26 @@
+<div>
+    <mat-drawer-container class="home-container" autosize>
+        <mat-toolbar>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button
+                (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>My App</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+                (click)="logOutHandler()">
+                <mat-icon>power_settings_new</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-drawer #drawer class="home-sidenav" mode="side">
+            <p>Auto-resizing sidenav</p>
+            <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+            <button (click)="showFiller = !showFiller" mat-raised-button>
+                Toggle extra text
+            </button>
+        </mat-drawer>
+    </mat-drawer-container>
+</div>
