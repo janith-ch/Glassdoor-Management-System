@@ -1,0 +1,48 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.sign-up-bg {
+  background-image: url("../../../assets/images/bg.jpg");
+  height: 1000px;
+  position: absolute;
+  width: -webkit-fill-available;
+}
+.b-color {
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+.container {
+  margin-top: 100px;
+  opacity: 0.9;
+}
+.mat-input-box {
+  width: 450px;
+}
+.sign-up-form {
+  padding: 30px;
+}
+.text-align-left {
+  float: left;
+  width: 78%;
+}
+.text-align-right {
+  text-align: right;
+}
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

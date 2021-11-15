@@ -40,16 +40,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    // RouterModule.forRoot([
-    //   {
-    //     path: '',
-    //     component: HomeComponent,
-    //   },
-    //   {
-    //     path: 'login',
-    //     component: LoginComponent,
-    //   },
-    // ]),
   ],
   providers: [LoginService, MainService, JwtService],
   bootstrap: [AppComponent],
