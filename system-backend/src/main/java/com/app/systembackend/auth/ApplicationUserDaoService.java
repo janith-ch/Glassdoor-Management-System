@@ -2,9 +2,8 @@ package com.app.systembackend.auth;
 
 
 import com.app.systembackend.model.User;
-import com.app.systembackend.model.dto.UserPermission;
+import com.app.systembackend.model.UserPermission;
 import com.app.systembackend.repository.mapper.UserPermissionMapper;
-import com.app.systembackend.repository.mapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,7 +1,7 @@
 import { Router, RouterModule } from '@angular/router';
 import { JwtService } from '../../service/jwt.service';
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../service/login.service';
+import { AuthService } from '../../service/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private jwtService: JwtService,
-    private loginService: LoginService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.dataModel = this.formBuilder.group({
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       password: this.dataModel.value.password,
     };
     console.log(credintials);
-    this.loginService.attemptLogin(credintials).subscribe(
+    this.authService.attemptLogin(credintials).subscribe(
       (data) => {
         this.jwtService.saveToken(data.accessToken);
         this.router.navigateByUrl('');

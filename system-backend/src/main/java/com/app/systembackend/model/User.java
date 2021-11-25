@@ -1,5 +1,4 @@
 package com.app.systembackend.model;
-import com.app.systembackend.model.dto.UserRole;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
@@ -15,6 +14,6 @@ public class User {
     private String email;
     private String password;
     private Number contact;
-    private String city;
+    private String occupation;
 
 }

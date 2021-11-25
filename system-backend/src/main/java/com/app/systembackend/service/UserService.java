@@ -1,7 +1,7 @@
 package com.app.systembackend.service;
 
 import com.app.systembackend.model.User;
-import com.app.systembackend.model.dto.UserPermission;
+import com.app.systembackend.model.UserPermission;
 import com.app.systembackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class UserService implements UserServiceInt {
     UserRepository userRepository;
 
     @Override
-    public User addUser(User user) {
+    public boolean addUser(User user) {
 
        return userRepository.addUser(user);
     }

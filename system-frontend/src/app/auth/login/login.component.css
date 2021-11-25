@@ -2,7 +2,7 @@
 
 .login-bg {
   background-image: url("../../../assets/images/bg.jpg");
-  height: -webkit-fill-available;
+  height: 1000px;
   position: absolute;
   width: -webkit-fill-available;
 }
