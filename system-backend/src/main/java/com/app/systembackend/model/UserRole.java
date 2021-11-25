@@ -1,11 +1,8 @@
-package com.app.systembackend.model.dto;
-
+package com.app.systembackend.model;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-
-
 import java.util.List;
-import java.util.Set;
+
 
 
 @Data

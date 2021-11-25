@@ -8,7 +8,7 @@ import { NgModule, Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
-import { LoginService } from './service/login.service';
+import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
@@ -40,18 +40,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    // RouterModule.forRoot([
-    //   {
-    //     path: '',
-    //     component: HomeComponent,
-    //   },
-    //   {
-    //     path: 'login',
-    //     component: LoginComponent,
-    //   },
-    // ]),
   ],
-  providers: [LoginService, MainService, JwtService],
+  providers: [AuthService, MainService, JwtService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

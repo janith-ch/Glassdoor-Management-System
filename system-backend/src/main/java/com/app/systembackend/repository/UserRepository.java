@@ -1,9 +1,12 @@
 package com.app.systembackend.repository;
 
+import com.app.systembackend.constant.CommonConstant;
+import com.app.systembackend.constant.UserConstant;
 import com.app.systembackend.model.User;
-import com.app.systembackend.model.dto.UserPermission;
+import com.app.systembackend.model.UserPermission;
 import com.app.systembackend.repository.mapper.UserPermissionMapper;
 import com.app.systembackend.repository.mapper.UserRowMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -15,36 +18,60 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
+@Slf4j
 public class UserRepository {
 
-    @Autowired
+
     @Qualifier("system-named-param-jdbc")
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private UserConstant userConstant;
+    private CommonConstant commonConstant;
 
-    public User addUser(User user) {
+    @Autowired
+    public UserRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate,
+                          UserConstant userConstant,
+                          CommonConstant commonConstant) {
+
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        this.userConstant = userConstant;
+        this.commonConstant = commonConstant;
+    }
+
+    public boolean addUser(User user) {
 
         try {
 
             Map<String, Object> param = new HashMap<>();
-            param.put("name", user.getName());
-            param.put("userName", user.getUserName());
-            param.put("password", user.getPassword());
-            param.put("email", user.getEmail());
-            param.put("userRole", user.getUserRole());
-            param.put("city", user.getCity());
-            param.put("contact", user.getContact());
+            param.put(userConstant.getNAME(), user.getName());
+            param.put(userConstant.getUSERNAME(), user.getUserName());
+            param.put(userConstant.getPASSWORD(), user.getPassword());
+            param.put(userConstant.getEmail(), user.getEmail());
+            param.put(userConstant.getROLE_ID(), user.getUserRole().getId());
+            param.put(userConstant.getOCCUPATION(), user.getOccupation());
+            param.put(userConstant.getCONTACT(), user.getContact());
 
-            String query = "INSERT INTO `USER` (`id`,`name`, `user_name`, `password`,`email`,`user_role`,`city`,`contact`)" +
-                    " VALUES (NULL,:name, :userName,:password,:email,:userRole,:city,:contact )";
+            String query = userConstant.getUSER_INSERT_QUERY();
 
-            namedParameterJdbcTemplate.update(query, param);
+            int result = namedParameterJdbcTemplate.update(query, param);
 
+            if (result == commonConstant.getONE()) {
+                log.info("User registration Successful {} ", user);
+
+                return true;
+
+            } else {
+
+                return false;
+            }
 
         } catch (Exception e) {
 
-            throw new RuntimeException("error getting user insert ==> " + e.getMessage());
+            log.info("Error in user registration {} ", user, e.getMessage());
+
+            throw new RuntimeException("Error getting user insert ==> " + e.getMessage());
+
         }
-        return user;
+
     }
 
     public List<User> getAllUsers() {
@@ -56,7 +83,7 @@ public class UserRepository {
 
         try {
 
-            List<User> user = namedParameterJdbcTemplate.query(query,new UserRowMapper());
+            List<User> user = namedParameterJdbcTemplate.query(query, new UserRowMapper());
             return user;
 
         } catch (Exception e) {
@@ -66,7 +93,7 @@ public class UserRepository {
         }
     }
 
-    public List<UserPermission> getAllUserPermissions(int id){
+    public List<UserPermission> getAllUserPermissions(int id) {
 
         String query = "SELECT * \n" +
                 "FROM role_permission rp\n" +
@@ -74,11 +101,11 @@ public class UserRepository {
                 "    ON rp.user_permission_id = up.permission_id\n" +
                 " WHERE user_role_id =:id";
 
-        return namedParameterJdbcTemplate.query(query, Collections.singletonMap("id",id),new UserPermissionMapper());
+        return namedParameterJdbcTemplate.query(query, Collections.singletonMap("id", id), new UserPermissionMapper());
 
     }
 
-    public User getUserById(int id){
+    public User getUserById(int id) {
 
         String query = "SELECT * \n" +
                 "FROM user u\n" +
@@ -88,7 +115,7 @@ public class UserRepository {
 
         try {
 
-            User user = namedParameterJdbcTemplate.queryForObject(query,Collections.singletonMap("id",id),new UserRowMapper());
+            User user = namedParameterJdbcTemplate.queryForObject(query, Collections.singletonMap("id", id), new UserRowMapper());
 
             return user;
 
