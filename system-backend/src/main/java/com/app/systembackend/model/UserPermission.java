@@ -1,4 +1,4 @@
-package com.app.systembackend.model.dto;
+package com.app.systembackend.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

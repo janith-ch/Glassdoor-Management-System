@@ -1,8 +1,7 @@
 package com.app.systembackend.repository.mapper;
 
 import com.app.systembackend.model.User;
-import com.app.systembackend.model.dto.UserPermission;
-import com.app.systembackend.model.dto.UserRole;
+import com.app.systembackend.model.UserRole;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -24,7 +23,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setEmail(resultSet.getString("email"));
         user.setUserRole(userRole);
         user.setPassword(resultSet.getString("password"));
-        user.setCity(resultSet.getString("city"));
+        user.setOccupation(resultSet.getString("occupation"));
         user.setContact(resultSet.getInt("contact"));
 
         return user;

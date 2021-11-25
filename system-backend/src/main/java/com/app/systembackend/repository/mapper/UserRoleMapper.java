@@ -1,7 +1,6 @@
 package com.app.systembackend.repository.mapper;
 
-import com.app.systembackend.model.dto.UserPermission;
-import com.app.systembackend.model.dto.UserRole;
+import com.app.systembackend.model.UserRole;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

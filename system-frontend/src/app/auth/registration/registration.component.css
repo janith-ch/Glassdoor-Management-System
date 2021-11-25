@@ -14,8 +14,13 @@
   border: 2px solid red;
 }
 .container {
-  margin-top: 100px;
+  margin-top: 80px;
   opacity: 0.9;
+}
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 .mat-input-box {
   width: 450px;

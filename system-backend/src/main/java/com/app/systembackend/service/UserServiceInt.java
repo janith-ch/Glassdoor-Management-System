@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserServiceInt {
 
-     User addUser(User user);
+     boolean addUser(User user);
 
      List<User> getAllUsers();
 
