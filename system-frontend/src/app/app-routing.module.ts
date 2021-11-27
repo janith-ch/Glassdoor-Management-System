@@ -1,18 +1,17 @@
+import { DrawerComponent } from './home/drawer/drawer.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: DrawerComponent,
   },
   {
     path: '',
-    component: HomeComponent,
+    component: DrawerComponent,
     children: [
       {
         path: '',

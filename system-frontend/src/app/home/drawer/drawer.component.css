@@ -1,16 +1,16 @@
 @import "~bootstrap/dist/css/bootstrap.css";
-.home-container {
+.drawer-container {
   width: auto;
   height: 1000px;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.home-sidenav-content {
+.drawer-sidenav-content {
   display: flex;
   align-items: center;
 }
 
-.home-sidenav {
+.drawer-sidenav {
   padding: 20px;
 }
 .example-spacer {

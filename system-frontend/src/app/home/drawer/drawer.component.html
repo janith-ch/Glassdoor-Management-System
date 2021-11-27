@@ -1,5 +1,5 @@
 <div>
-    <mat-drawer-container class="home-container" autosize>
+    <mat-drawer-container class="drawer-container" autosize>
         <mat-toolbar>
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button
                 (click)="drawer.toggle()">
@@ -15,12 +15,18 @@
                 <mat-icon>power_settings_new</mat-icon>
             </button>
         </mat-toolbar>
-        <mat-drawer #drawer class="home-sidenav" mode="side">
+        <mat-drawer #drawer class="drawer-sidenav" mode="side">
             <p>Auto-resizing sidenav</p>
             <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
             <button (click)="showFiller = !showFiller" mat-raised-button>
                 Toggle extra text
             </button>
         </mat-drawer>
+        <mat-grid-list cols="3">
+            <mat-grid-tile>1</mat-grid-tile>
+            <mat-grid-tile>2</mat-grid-tile>
+            <mat-grid-tile>3</mat-grid-tile>
+
+        </mat-grid-list>
     </mat-drawer-container>
 </div>
